@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+
+
+/* Enable dark variant in Tailwind v4 */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #13ec5b;
+  --color-bg-dark: #102216;
+  --color-surface-dark: #1A2C22;
+  --color-border-dark: #28392e;
+  --color-text-secondary: #9db9a6;
+}
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #13ec5b;
+  --color-background-dark: #102216;
+  --color-card-dark: #16281e;
+  --color-card-border: #28392e;
+  --color-text-secondary: #9db9a6;
+}
+
+@import "tailwindcss";
+
+/* Tailwind v4 theme tokens */
+@theme {
+  --color-primary: #13ec5b;
+  --color-bg-dark: #102216;
+  --color-card-dark: #16281e;
+  --color-card-border: #28392e;
+  --color-text-secondary: #9db9a6;
+}
+
+/* Dark mode enable */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Hero animated glow */
+.hero-glow {
+  background: radial-gradient(circle at center, rgba(19,236,91,0.18) 0%, transparent 70%);
+}
+
+/* Neon animated grid */
+.neon-grid {
+  background-image:
+    linear-gradient(rgba(19,236,91,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19,236,91,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 120px 120px; }
+}
+
+.neon-grid {
+  background-image:
+    linear-gradient(rgba(19,236,91,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19,236,91,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 120px 120px; }
+}
+.float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
