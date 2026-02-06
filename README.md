@@ -1,75 +1,84 @@
-🚀 Smart Expense & Budget Tracker Backend (Fintech-Grade)
+# 🚀 Smart Expense & Budget Tracker Backend (Fintech-Grade)
 
-A production-ready financial tracking backend built with Node.js, TypeScript, PostgreSQL, Prisma, and JWT authentication.
-This project demonstrates industry-level backend architecture, database modeling, and financial business logic enforcement.
+---
 
-📌 Features
-✅ Authentication & Security
+## 📌 Project Overview
 
-User registration with bcrypt password hashing
+**Smart Expense & Budget Tracker Backend** is a production-ready financial tracking system built using **Node.js, TypeScript, PostgreSQL, Prisma, and JWT authentication**.  
+It demonstrates **industry-level backend architecture, fintech business logic, and scalable database design**.
 
-JWT-based authentication
+This project simulates real-world fintech backend systems used in banking and expense management platforms.
 
-Protected routes using middleware
+---
 
-Token verification & user session handling
+## ✨ Key Features
 
-💰 Expense & Income Management
+---
 
-Create income and expense transactions
+### 🔐 Authentication & Security
+- User registration with **bcrypt password hashing**
+- **JWT-based authentication**
+- Protected routes using middleware
+- Token verification and session handling
 
-Category-based transaction tracking
+---
 
-Monthly and custom date-range analytics
+### 💰 Expense & Income Management
+- Create **income and expense transactions**
+- Category-based transaction tracking
+- Monthly and custom date-range analytics
+- **PostgreSQL indexes for optimized queries**
 
-PostgreSQL optimized indexes for fast queries
+---
 
-📊 Budget System (Fintech Logic)
+### 📊 Budget System (Fintech Logic)
+- Monthly budget per category
+- Composite unique constraint (**user + month + year + category**)
+- Prevents duplicate budgets
+- Budget validation before expense creation
+- Budget analytics (spent, remaining, % used)
 
-Monthly budget per category
+---
 
-Composite unique constraint (user + month + year + category)
+### 📈 Analytics Dashboard APIs
+- Total income, expense, and savings summary
+- Category-wise expense breakdown
+- Budget vs actual spending comparison
+- Monthly & custom date-range filters
 
-Prevents duplicate budgets
+---
 
-Budget enforcement before adding expense
+## 🏗 Tech Stack
 
-Budget usage analytics (spent, remaining, % used)
+| Layer | Technology |
+|--------|------------|
+| Language | TypeScript |
+| Runtime | Node.js |
+| Framework | Express.js |
+| Database | PostgreSQL |
+| ORM | Prisma |
+| Authentication | JWT |
+| Security | bcrypt |
+| API Testing | Postman / Thunder Client |
 
-📈 Analytics Dashboard APIs
+---
 
-Total income, expense, and savings summary
+## 📂 Project Structure
 
-Category-wise expense breakdown
-
-Budget vs actual spend comparison
-
-Monthly and custom date-range filters
-
-🏗 Tech Stack
-Layer	Technology
-Language	TypeScript
-Runtime	Node.js
-Framework	Express.js
-Database	PostgreSQL
-ORM	Prisma
-Auth	JWT
-Security	bcrypt
-API Testing	REST Client / Thunder Client / Postman
-📂 Project Structure
+```txt
 src/
 │
-├── controllers/       # Request handling (HTTP layer)
-├── services/           # Business logic
-├── routes/             # API route mapping
-├── middlewares/         # Auth middleware
-├── utils/               # JWT, hashing utilities
-├── prisma/              # Prisma client
-├── app.ts               # Express app setup
-└── server.ts            # Server bootstrap
+├── controllers/        # HTTP request handling
+├── services/            # Business logic layer
+├── routes/              # API routing
+├── middlewares/          # Authentication & validation middleware
+├── utils/                # JWT, hashing utilities
+├── prisma/               # Prisma client setup
+├── app.ts                # Express configuration
+└── server.ts             # Server bootstrap
 
 ⚙️ Installation & Setup
-1️⃣ Clone Repository
+1️⃣ Clone the Repository
 git clone https://github.com/your-username/expense-tracker-backend.git
 cd expense-tracker-backend
 
@@ -78,47 +87,45 @@ npm install
 
 3️⃣ Environment Variables
 
-Create .env file:
+Create a .env file:
 
 DATABASE_URL="postgresql://user:password@localhost:5432/expense_db"
 JWT_SECRET="your_secret_key"
 PORT=3000
 
-4️⃣ Run Prisma
+4️⃣ Run Prisma Migrations
 npx prisma migrate dev
 npx prisma generate
 
-5️⃣ Start Server
+5️⃣ Start the Server
 npm run dev
 
-
-Server runs at:
-
+✅ Server Running At
 http://localhost:3000
 
 🔑 API Endpoints
-Auth
+🔐 Auth Routes
 Method	Endpoint	Description
 POST	/api/auth/register	Register user
 POST	/api/auth/login	Login user
-Categories
+📂 Category Routes
 Method	Endpoint	Description
 POST	/api/categories	Create category
 GET	/api/categories	Get user categories
-Transactions
+💳 Transaction Routes
 Method	Endpoint	Description
 POST	/api/transactions	Add transaction
 GET	/api/transactions	List transactions
-Budgets
+💰 Budget Routes
 Method	Endpoint	Description
-POST	/api/budgets	Create or update budget
+POST	/api/budgets	Create / Update budget
 GET	/api/budgets	Get budgets
-Analytics
+📊 Analytics Routes
 Method	Endpoint	Description
 GET	/api/summary	Income, Expense, Savings
 GET	/api/category-breakdown	Expense per category
-GET	/api/budget-usage	Budget vs Spend
-📌 Sample Request (REST Client)
+GET	/api/budget-usage	Budget vs Spending
+🧪 Sample API Request
 POST http://localhost:3000/api/transactions
 Authorization: Bearer <JWT_TOKEN>
 Content-Type: application/json
@@ -133,19 +140,19 @@ Content-Type: application/json
 
 🧠 Key Fintech Concepts Implemented
 
-Composite unique constraints (DB-level data integrity)
+Composite unique constraints for financial data integrity
 
-Budget enforcement before expense creation
+Budget enforcement logic before expense creation
 
-Monthly financial analytics queries
+Monthly financial analytics using SQL aggregations
 
-PostgreSQL aggregation queries
+PostgreSQL optimized indexing
 
 Secure JWT authentication
 
-Clean architecture (Controller → Service → DB)
+Clean layered architecture (Controller → Service → DB)
 
-Type-safe backend using TypeScript
+Type-safe backend with TypeScript
 
 Scalable modular folder structure
 
@@ -155,15 +162,15 @@ Role-based access control (Admin/User)
 
 Recurring transactions
 
-Notifications when budget exceeds 80%
+Budget threshold notifications (80% warning)
 
-GraphQL API
+GraphQL API support
 
 Redis caching for analytics
 
-Docker deployment
+Docker containerization
 
-Frontend dashboard (Next.js)
+Frontend dashboard (Next.js / React)
 
 👨‍💻 Author
 
