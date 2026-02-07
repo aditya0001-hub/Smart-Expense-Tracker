@@ -1,5 +1,5 @@
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 // import morgan from "morgan";
 
 // Routes
@@ -15,7 +15,18 @@ import categoryRoutes from "./routes/category.roues.js";
 const app = express();
 
 // ===== Global Middlewares =====
-// app.use(cors());
+
+
+app.use(cors({
+  origin: [
+    "https://expense-tracker-frontend-nine-rho.vercel.app",
+    "http://localhost:5173"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+app.options("*", cors());
+
 app.use(express.json());
 // app.use(morgan("dev"));
 

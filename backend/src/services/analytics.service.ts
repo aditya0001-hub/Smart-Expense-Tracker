@@ -1,6 +1,7 @@
-import { prisma } from './../../prisma/lib/prisma.js'
-import { TransactionType } from '../../generated/prisma/enums.js'
-import { emitWarning } from 'node:process';
+import { prisma } from '../lib/prisma.js'
+import { TransactionType } from "@prisma/client";
+
+
 
 
 export async function getSummary(userId: number, dateFilter: { month?: number, year?: number, startDate?: Date, endDate?: Date }) {

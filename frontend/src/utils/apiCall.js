@@ -1,7 +1,7 @@
 export async function apiCall(endpoint, method = "GET", data = null) {
-  // const url = `http://localhost:3000${endpoint}`;
-  // Use relative path so proxy works
-  const url = endpoint;
+
+  const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+  const url = endpoint.startsWith("http") ? endpoint : `${BASE_URL}${endpoint}`;
 
   const token = localStorage.getItem("token");
 

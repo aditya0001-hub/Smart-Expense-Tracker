@@ -3,25 +3,25 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "userEmail":"adit@gmail.com",
+  "userEmail":"Aditya@gmail.com",
   "userPassword":"123456789"
 }
 ### Create Category
 POST http://localhost:3000/api/categories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZGl0QGdtYWlsLmNvbSIsImlhdCI6MTc2OTkyMDMwMywiZXhwIjoxNzcwMDA2NzAzfQ.ACkhMRG_hKGAasfkm5Nba46zuGf-VvD2QC2i9l-CrI8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJBZGl0eWFAZ21haWwuY29tIiwiaWF0IjoxNzcwMzgzMzgzLCJleHAiOjE3NzA0Njk3ODN9.LKYiaZcJYOeNL4z6AH9DNsQ81ZMACnrrlRcLlnjoOCg
 
 {
-  "name": "rent"
+  "name": "goods"
 }
 
 ### Create budget
 POST http://localhost:3000/api/budgets
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZGl0QGdtYWlsLmNvbSIsImlhdCI6MTc2OTkyMDMwMywiZXhwIjoxNzcwMDA2NzAzfQ.ACkhMRG_hKGAasfkm5Nba46zuGf-VvD2QC2i9l-CrI8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJBZGl0eWFAZ21haWwuY29tIiwiaWF0IjoxNzcwMzgzMzgzLCJleHAiOjE3NzA0Njk3ODN9.LKYiaZcJYOeNL4z6AH9DNsQ81ZMACnrrlRcLlnjoOCg
 
 {
-  "categoryId": 2,
+  "categoryId": 5,
   "amount": 2100,
   "month": 2,
   "year": 2026
@@ -31,12 +31,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiO
 ### Create transactions
 POST http://localhost:3000/api/transactions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZGl0QGdtYWlsLmNvbSIsImlhdCI6MTc3MDAzNTIwMiwiZXhwIjoxNzcwMTIxNjAyfQ.Igc_49FDHNieJysRLRUtJqT2UryEorFWaKvfVTpVQwc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJBZGl0eWFAZ21haWwuY29tIiwiaWF0IjoxNzcwMzgzMzgzLCJleHAiOjE3NzA0Njk3ODN9.LKYiaZcJYOeNL4z6AH9DNsQ81ZMACnrrlRcLlnjoOCg
 
 {
  "amount":20,
  "type":"EXPENSE",
- "categoryId":2,
+ "categoryId":5,
  "description":"mess nook",
  "date":"2026-02-02T10:30:00.000Z"
 }

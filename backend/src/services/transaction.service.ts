@@ -1,5 +1,6 @@
-import { prisma } from './../../prisma/lib/prisma.js'
-import { TransactionType } from '../../generated/prisma/enums.js'
+import { prisma } from '../lib/prisma.js'
+import { TransactionType } from "@prisma/client";
+
 
 
 
