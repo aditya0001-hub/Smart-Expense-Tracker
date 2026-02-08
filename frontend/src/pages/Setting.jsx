@@ -11,7 +11,7 @@ export default function Settings() {
   };
 
   return (
-    <div className="flex min-h-full flex-col p-8 md:p-12 lg:pr-20 text-white">
+    <div className="flex min-h-full flex-col p-4 md:p-12 lg:pr-20 text-white">
 
       {/* HEADER */}
       <header className="mb-10 flex flex-col gap-2">

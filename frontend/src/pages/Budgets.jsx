@@ -199,7 +199,7 @@ export default function Budgets() {
 
 
       {/* MAIN */}
-      <main className={`max-w-360 mx-auto px-4 md:px-10 py-8 transition duration-300 ${isCatModalOpen || isBudgetModalOpen ? 'blur-sm pointer-events-none' : ''}`}>
+      <main className={`max-w-7xl mx-auto px-4 md:px-10 py-8 transition duration-300 ${isCatModalOpen || isBudgetModalOpen ? 'blur-sm pointer-events-none' : ''}`}>
 
         {/* Title & Actions */}
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">

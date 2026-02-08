@@ -92,7 +92,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-[#0f1f16] dark:bg-[#0f1f16] text-white">
 
       {/* MAIN */}
-      <main className="flex-1 p-6 space-y-6 w-full">
+      <main className="flex-1 p-4 md:p-6 space-y-6 w-full">
 
         {/* HEADER */}
         <div>
@@ -101,7 +101,7 @@ export default function Dashboard() {
         </div>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Stat title="Total Balance" value={`₹${summary.savings || 0}`} />
           <Stat title="Monthly Income" value={`₹${summary.totalIncome || 0}`} />
           <Stat title="Monthly Expenses" value={`₹${summary.totalExpense || 0}`} />

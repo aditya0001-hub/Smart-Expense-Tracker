@@ -1,23 +1,44 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../../auth/AuthContext";
 
-export default function SideNavBar() {
+// eslint-disable-next-line react/prop-types
+export default function SideNavBar({ isOpen, onClose }) {
   const { user } = useAuth();
   if (true) {
     return (
       <>
+        {/* BACKDROP for MOBILE */}
+        <div
+          className={`fixed inset-0 z-40 bg-black/50 transition-opacity md:hidden ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
+            }`}
+          onClick={onClose}
+        />
+
         {/* SIDEBAR */}
-        <aside className="flex h-full w-60 flex-col justify-between border-r border-white/5 bg-(--color-background-dark) p-2 pt-7">
+        <aside
+          className={`fixed inset-y-0 left-0 z-50 w-64 transform border-r border-white/5 bg-(--color-background-dark) p-2 pt-7 transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"
+            } flex h-full flex-col justify-between`}
+        >
 
           {/* TOP */}
           <div className="flex flex-col gap-8">
 
-            {/* LOGO */}
-            <div className="flex items-center gap-3 px-2">
-              <div className="flex h-5 w-5 items-center justify-center rounded-xl bg-primary/20 text-primary ring-1 ring-primary/30">
-                <span className="material-symbols-outlined">account_balance_wallet</span>
+            {/* LOGO & CLOSE */}
+            <div className="flex items-center justify-between px-2">
+              <div className="flex items-center gap-3">
+                <div className="flex h-5 w-5 items-center justify-center rounded-xl bg-primary/20 text-primary ring-1 ring-primary/30">
+                  <span className="material-symbols-outlined">account_balance_wallet</span>
+                </div>
+                <h1 className="text-base font-bold tracking-tight text-white">Smart Finance</h1>
               </div>
-              <h1 className="text-base font-bold tracking-tight text-white">Smart Finance</h1>
+
+              {/* Close Button (Mobile Only) */}
+              <button
+                onClick={onClose}
+                className="md:hidden text-gray-400 hover:text-white"
+              >
+                <span className="material-symbols-outlined">close</span>
+              </button>
             </div>
 
             {/* NAV LINKS */}
@@ -26,6 +47,7 @@ export default function SideNavBar() {
               {/* DASHBOARD */}
               <NavLink
                 to="/dashboard"
+                onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-full px-4 py-3 transition-all
                 ${isActive ? "bg-white/10 text-white" : "text-gray-400 hover:bg-white/5 hover:text-white"}`
@@ -37,6 +59,7 @@ export default function SideNavBar() {
               {/* BUDGETS */}
               <NavLink
                 to="/budgets"
+                onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-full px-4 py-3 transition-all
                 ${isActive ? "bg-white/10 text-white" : "text-gray-400 hover:bg-white/5 hover:text-white"}`
@@ -49,6 +72,7 @@ export default function SideNavBar() {
               {/* TRANSACTIONS */}
               <NavLink
                 to="/transactions"
+                onClick={onClose}
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-full px-4 py-3 transition-all
                 ${isActive ? "bg-white/10 text-white" : "text-gray-400 hover:bg-white/5 hover:text-white"}`
@@ -67,6 +91,7 @@ export default function SideNavBar() {
             {/* SETTINGS */}
             <NavLink
               to="/settings"
+              onClick={onClose}
               className="flex items-center gap-3 rounded-full px-4 py-3 text-gray-400 hover:bg-white/5 hover:text-white"
             >
               <span className="material-symbols-outlined">settings</span>

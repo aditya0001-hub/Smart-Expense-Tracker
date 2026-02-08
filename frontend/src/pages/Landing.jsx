@@ -100,16 +100,19 @@ function FintechChart() {
     );
 }
 
+
 export default function Landing() {
     const navigate = useNavigate()
     const handleLogin = () => {
-        
+
         navigate("/login")
     }
     const handleRegister = () => {
-        
+
         navigate("/register")
     }
+
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
     const typed = useTyping("Track expenses. Manage budgets. Visualize wealth.");
@@ -134,7 +137,7 @@ export default function Landing() {
                         </span>
                     </div>
 
-                    {/* CENTER LINKS */}
+                    {/* CENTER LINKS (Desktop) */}
                     <nav className="hidden md:flex items-center gap-8 text-sm text-text-secondary">
                         <a href="#features" className="hover:text-white transition">Features</a>
                         <a href="#chart" className="hover:text-white transition">Charts</a>
@@ -142,8 +145,8 @@ export default function Landing() {
 
                     </nav>
 
-                    {/* RIGHT ACTIONS */}
-                    <div className="flex items-center gap-4">
+                    {/* RIGHT ACTIONS (Desktop) */}
+                    <div className="hidden md:flex items-center gap-4">
                         <button onClick={handleLogin} className="text-sm text-text-secondary hover:text-white transition">
                             Log In
                         </button>
@@ -152,11 +155,41 @@ export default function Landing() {
                             Get Started
                         </button>
                     </div>
+
+                    {/* MOBILE HAMBURGER */}
+                    <button
+                        className="md:hidden text-white"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <span className="material-symbols-outlined text-3xl">
+                            {isMobileMenuOpen ? "close" : "menu"}
+                        </span>
+                    </button>
                 </div>
-            </header>
-            {/* HEADER (unchanged) */}
-            <header className="sticky top-0 z-50 border-b border-(--color-card-border) bg-(--color-background-dark)/80 backdrop-blur">
-                {/* same header code */}
+
+                {/* MOBILE MENU OVERLAY */}
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="md:hidden absolute top-16 left-0 w-full bg-(--color-background-dark) border-b border-(--color-card-border) p-6 shadow-2xl flex flex-col gap-6"
+                    >
+                        <nav className="flex flex-col gap-4 text-center text-lg text-text-secondary">
+                            <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-white transition">Features</a>
+                            <a href="#chart" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-white transition">Charts</a>
+                            <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-white transition">Free</a>
+                        </nav>
+                        <div className="flex flex-col gap-4 mt-2">
+                            <button onClick={handleLogin} className="w-full h-12 rounded-xl border border-white/10 hover:bg-white/5 transition font-semibold">
+                                Log In
+                            </button>
+                            <button onClick={handleRegister} className="w-full h-12 rounded-xl bg-primary text-black font-bold hover:brightness-110 transition">
+                                Get Started
+                            </button>
+                        </div>
+                    </motion.div>
+                )}
             </header>
 
             {/* HERO SECTION */}

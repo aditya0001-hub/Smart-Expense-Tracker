@@ -1,12 +1,15 @@
 import heroImage from './../assets/front_image_rising_green.png'
 import { apiCall } from '../utils/apiCall';
 import { useState, useEffect, useRef } from 'react';
-
+import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import GoogleAuth from '../auth/GoogleAuth';
+import { useAuth } from '../auth/AuthContext';
 
 export default function Register() {
 
   const navigate = useNavigate()
+  const { login } = useAuth();
   const [userName, setuserName] = useState("")
   const [visible, setVisible] = useState("visibility_off");
   const [pass_text, setPass_text] = useState("password")
@@ -33,7 +36,12 @@ export default function Register() {
     try {
       const data = await apiCall("/api/auth/register", "POST", { "userName": userName, "userEmail": userEmail, "userPassword": userPassword });
       console.log("Registration success:", data);
-      navigate('/login');
+      // Automatically login after successful registration
+      const loginData = await apiCall("/api/auth/login", "POST", { "userEmail": userEmail, "userPassword": userPassword });
+      if (loginData && loginData.token) {
+        login(loginData.token, loginData.user);
+        navigate('/dashboard');
+      }
     } catch (err) {
       console.error("Registration error:", err);
       // apiCall now throws the actual message
@@ -149,15 +157,16 @@ export default function Register() {
               Create account
             </button>
 
-            <button className="cursor-pointer h-12 w-full border border-gray-300 dark:border-surface-dark
-              rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-white/5">
-              <GoogleIcon /> Sign up with Google
-            </button>
+            <div className="mt-4">
+              <GoogleAuth text="signup_with" mode="register" />
+            </div>
           </form>
 
           <p className="mt-8 text-sm text-center text-gray-500">
             Already have an account?{" "}
-            <a href='/login' className="text-primary font-semibold cursor-pointer">Sign in</a>
+            <Link to="/login" className="text-primary font-semibold cursor-pointer">
+              Sign in
+            </Link>
           </p>
         </div>
       </div>

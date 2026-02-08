@@ -3,6 +3,8 @@ import heroImage from './../assets/front_image_rising_green.png'
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { apiCall } from '../utils/apiCall';
+import { Link } from 'react-router-dom';
+import GoogleAuth from '../auth/GoogleAuth';
 
 export default function Login() {
   const [visible, setVisible] = useState("visibility_off")
@@ -142,23 +144,15 @@ export default function Login() {
             </button>
 
             {/* GOOGLE LOGIN */}
-            <button className="cursor-pointer h-12 w-full flex items-center justify-center gap-2 border border-slate-300 dark:border-[#1c2e22] bg-white dark:bg-[#1c2e22] rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 transition">
-              <svg className="h-5 w-5" viewBox="0 0 24 24">
-                <path
-                  d="M12.0003 20.45c4.656 0 8.556-3.21 9.97-7.66h-9.97v-4.48h14.88c.15 1.14.24 2.33.24 3.59 0 8.79-5.88 15.1-15.12 15.1-8.34 0-15.10003-6.76-15.10003-15.1s6.76003-15.1 15.10003-15.1c4.07 0 7.75 1.49 10.62 3.93l-3.23 3.23c-1.88-1.52-4.47-2.68-7.39-2.68-6.19 0-11.2 5.01-11.2 11.2s5.01 11.2 11.2 11.2z"
-                  fill="currentColor"
-                />
-              </svg>
-              Sign in with Google
-            </button>
+            <GoogleAuth text="signin_with" mode="login" />
           </form>
 
           {/* FOOTER */}
           <div className="mt-8 text-center text-sm text-slate-500 dark:text-gray-400">
             Don&apos;t have an account?{" "}
-            <a href='/register' className=" cursor-pointer font-semibold text-primary hover:opacity-80">
+            <Link to="/register" className=" cursor-pointer font-semibold text-primary hover:opacity-80">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
       </div>

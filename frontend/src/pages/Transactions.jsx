@@ -235,8 +235,9 @@ export default function Transaction() {
         </div>
       )}
 
+
       {/* MAIN */}
-      <main className={`max-w-360 mx-auto px-4 md:px-10 py-8 transition duration-300 ${isModalOpen ? 'blur-sm pointer-events-none' : ''}`}>
+      <main className={`max-w-7xl mx-auto px-4 md:px-10 py-8 transition duration-300 ${isModalOpen ? 'blur-sm pointer-events-none' : ''}`}>
 
         {/* Title */}
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
@@ -252,7 +253,7 @@ export default function Transaction() {
               onClick={handleOpenModal}
               className="px-4 h-10 flex items-center gap-2 rounded-lg bg-primary text-black font-bold hover:opacity-90 transition"
             >
-              <span className="material-symbols-outlined">add</span> Add Transaction
+              <span className="material-symbols-outlined">add</span> <span className="hidden sm:inline">Add Transaction</span><span className="sm:hidden">Add</span>
             </button>
           </div>
         </div>
@@ -266,7 +267,7 @@ export default function Transaction() {
               <div className="flex items-center bg-gray-100 dark:bg-bg-dark rounded-lg px-3 h-10">
                 <span className="material-symbols-outlined text-text-secondary">search</span>
                 <input
-                  placeholder="Search by description, amount, or category..."
+                  placeholder="Search..."
                   className="bg-transparent outline-none w-full px-2 text-sm"
                 />
               </div>
@@ -292,41 +293,43 @@ export default function Transaction() {
             <div className="p-8 text-center text-text-secondary">Loading transactions...</div>
           ) : (
             <>
-              <table className="w-full text-sm">
-                <thead className="bg-gray-50 dark:bg-[#152a1f] text-text-secondary uppercase text-xs">
-                  <tr>
-                    <th className="px-6 py-4 text-left">Date</th>
-                    <th className="px-6 py-4 text-left">Category</th>
-                    <th className="px-6 py-4 text-left">Description</th>
-                    <th className="px-6 py-4 text-right">Amount</th>
-                  </tr>
-                </thead>
-
-                <tbody className="divide-y divide-gray-200 dark:divide-border-dark">
-                  {currentData.length === 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className="bg-gray-50 dark:bg-[#152a1f] text-text-secondary uppercase text-xs">
                     <tr>
-                      <td colSpan="4" className="px-6 py-8 text-center text-text-secondary">
-                        No transactions found.
-                      </td>
+                      <th className="px-6 py-4 text-left whitespace-nowrap">Date</th>
+                      <th className="px-6 py-4 text-left whitespace-nowrap">Category</th>
+                      <th className="px-6 py-4 text-left whitespace-nowrap">Description</th>
+                      <th className="px-6 py-4 text-right whitespace-nowrap">Amount</th>
                     </tr>
-                  ) : (
-                    currentData.map((tx) => (
-                      <Row
-                        key={tx.id}
-                        date={new Date(tx.date).toLocaleDateString()}
-                        cat={tx.category?.name || "Uncategorized"}
-                        desc={tx.description}
-                        amount={tx.amount}
-                        type={tx.type}
-                      />
-                    ))
-                  )}
-                </tbody>
-              </table>
+                  </thead>
+
+                  <tbody className="divide-y divide-gray-200 dark:divide-border-dark">
+                    {currentData.length === 0 ? (
+                      <tr>
+                        <td colSpan="4" className="px-6 py-8 text-center text-text-secondary">
+                          No transactions found.
+                        </td>
+                      </tr>
+                    ) : (
+                      currentData.map((tx) => (
+                        <Row
+                          key={tx.id}
+                          date={new Date(tx.date).toLocaleDateString()}
+                          cat={tx.category?.name || "Uncategorized"}
+                          desc={tx.description}
+                          amount={tx.amount}
+                          type={tx.type}
+                        />
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
 
               {/* Pagination */}
               <div className="flex flex-col sm:flex-row justify-between items-center p-4 border-t border-gray-200 dark:border-border-dark">
-                <p className="text-sm text-text-secondary">
+                <p className="text-sm text-text-secondary mb-2 sm:mb-0">
                   Showing <b>{transactions.length > 0 ? indexOfFirstItem + 1 : 0}</b> to <b>{Math.min(indexOfLastItem, transactions.length)}</b> of <b>{transactions.length}</b> results
                 </p>
 
